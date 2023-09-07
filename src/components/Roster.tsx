@@ -3,7 +3,7 @@ import TradeForm from './common/TradeForm'
 import { useTeamStore } from '../store/TeamStore'
 
 
-const Rooster = () => {
+const Roster = () => {
 
     const {players} = useTeamStore()
 
@@ -37,4 +37,4 @@ const Rooster = () => {
     )
 }
 
-export default observer(Rooster)
+export default observer(Roster)

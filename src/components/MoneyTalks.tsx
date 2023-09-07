@@ -52,7 +52,7 @@ const MoneyTalks  = () => {
         type="number"
         placeholder="Player age..."
         style={{ height: "40px" }}
-        value={formState.age}
+        min={16}
         onChange={action((e) => {
           formState.age = +e.target.value
         })}
@@ -62,6 +62,7 @@ const MoneyTalks  = () => {
         type="number"
         placeholder="Years..."
         style={{ height: "40px" }}
+        min={16}
         onChange={action((e: ChangeEvent<HTMLInputElement>) => formState.years = +e.currentTarget.value) }
       />
       
@@ -69,10 +70,12 @@ const MoneyTalks  = () => {
         type="number"
         placeholder="Yearly salary..."
         style={{ height: "40px" }}
+        min={1}
         onChange={action((e: ChangeEvent<HTMLInputElement>) => formState.salary = +e.currentTarget.value )}
       />
       <button
         type="button"
+        style={{marginTop: '10px'}}
         onClick={action(() => {
             addPlayer(new Athlete(formState.name, formState.age, formState.salary)) 
             formState = initialState;

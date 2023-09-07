@@ -18,7 +18,8 @@ export default class TeamStore {
     this.mascot = mascot;
   };
 
-  players: Athlete[] = [];
+  players: Athlete[] = [];  
+
   setPlayers = (players: Athlete[]) => {
     this.players = players;
   };
