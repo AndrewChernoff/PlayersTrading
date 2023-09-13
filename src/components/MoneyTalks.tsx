@@ -27,6 +27,11 @@ let formState: FormStateType = observable({
     age: 0
 })
 
+
+const validate = (): boolean => {
+  return formState.years === 0 || formState.salary === 0 || formState.name.trim().length < 4 || formState.age < 16 ? true : false;
+}
+
 const MoneyTalks  = () => {
 
     const { addPlayer} = useTeamStore();
@@ -37,7 +42,7 @@ const MoneyTalks  = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <h1 style={{ marginBottom: 0 }}>Money Talks</h1>
-      <h2>Total: { total.get() }</h2>
+      <h2>Total: { total.get() > 0 ? `${total.get()} million` : 0}  </h2>
 
       <input
         type="text"
@@ -62,7 +67,7 @@ const MoneyTalks  = () => {
         type="number"
         placeholder="Years..."
         style={{ height: "40px" }}
-        min={16}
+        min={1}
         onChange={action((e: ChangeEvent<HTMLInputElement>) => formState.years = +e.currentTarget.value) }
       />
       
@@ -76,6 +81,7 @@ const MoneyTalks  = () => {
       <button
         type="button"
         style={{marginTop: '10px'}}
+        disabled={validate()}
         onClick={action(() => {
             addPlayer(new Athlete(formState.name, formState.age, formState.salary)) 
             formState = initialState;

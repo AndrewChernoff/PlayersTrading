@@ -27,7 +27,8 @@ class Athlete {
     }
 
     tradePlayer = (team: string) => {
-        this.teamsList.push(team)
+        //this.teamsList.push(team)
+        this.teamsList = [...this.teamsList, team]
     }
 }
 

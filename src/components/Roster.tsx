@@ -21,7 +21,7 @@ const Roster = () => {
                         <td>{athlete.name}</td>
                         <td>{athlete.age}</td>
                         <td><TradeForm athlete={athlete}/></td>
-                        <td>{athlete.teamsList}</td>
+                        <td>{athlete.teamsList.map((el, i) => ((i === 0 && athlete.teamsList.length === 1) || i === athlete.teamsList.length - 1) ? `${el} ` : `${el}, `)}</td>
                         <td>
                             <button 
                                 type='button'
